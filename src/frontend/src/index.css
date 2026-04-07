@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Geist Mono";
+    --font-body: "General Sans";
+    --font-mono: "Geist Mono";
+    --radius: 0.125rem;
+
+    --background: 0.12 0 0;
+    --foreground: 0.9 0 0;
+    --card: 0.16 0 0;
+    --card-foreground: 0.9 0 0;
+    --popover: 0.16 0 0;
+    --popover-foreground: 0.9 0 0;
+
+    /* Electric cyan accent */
+    --primary: 0.78 0.18 195;
+    --primary-foreground: 0.1 0 0;
+
+    --secondary: 0.2 0 0;
+    --secondary-foreground: 0.8 0 0;
+    --muted: 0.2 0 0;
+    --muted-foreground: 0.52 0 0;
+
+    --accent: 0.78 0.18 195;
+    --accent-foreground: 0.1 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.9 0 0;
+
+    --border: 0.22 0 0;
+    --input: 0.22 0 0;
+    --ring: 0.78 0.18 195;
+
+    --chart-1: 0.78 0.18 195;
+    --chart-2: 0.65 0.18 145;
+    --chart-3: 0.6 0.16 150;
+    --chart-4: 0.7 0.15 85;
+    --chart-5: 0.55 0.22 25;
+
+    --sidebar: 0.16 0 0;
+    --sidebar-foreground: 0.9 0 0;
+    --sidebar-primary: 0.78 0.18 195;
+    --sidebar-primary-foreground: 0.1 0 0;
+    --sidebar-accent: 0.2 0 0;
+    --sidebar-accent-foreground: 0.8 0 0;
+    --sidebar-border: 0.22 0 0;
+    --sidebar-ring: 0.78 0.18 195;
+  }
+
+  .dark {
+    --background: 0.12 0 0;
+    --foreground: 0.9 0 0;
+    --card: 0.16 0 0;
+    --card-foreground: 0.9 0 0;
+    --popover: 0.16 0 0;
+    --popover-foreground: 0.9 0 0;
+
+    --primary: 0.78 0.18 195;
+    --primary-foreground: 0.1 0 0;
+
+    --secondary: 0.2 0 0;
+    --secondary-foreground: 0.8 0 0;
+    --muted: 0.2 0 0;
+    --muted-foreground: 0.52 0 0;
+
+    --accent: 0.78 0.18 195;
+    --accent-foreground: 0.1 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.9 0 0;
+
+    --border: 0.22 0 0;
+    --input: 0.22 0 0;
+    --ring: 0.78 0.18 195;
+
+    --chart-1: 0.78 0.18 195;
+    --chart-2: 0.65 0.18 145;
+    --chart-3: 0.6 0.16 150;
+    --chart-4: 0.7 0.15 85;
+    --chart-5: 0.55 0.22 25;
+
+    --sidebar: 0.16 0 0;
+    --sidebar-foreground: 0.9 0 0;
+    --sidebar-primary: 0.78 0.18 195;
+    --sidebar-primary-foreground: 0.1 0 0;
+    --sidebar-accent: 0.2 0 0;
+    --sidebar-accent-foreground: 0.8 0 0;
+    --sidebar-border: 0.22 0 0;
+    --sidebar-ring: 0.78 0.18 195;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    color-scheme: dark;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-colors-fast {
+    transition: color 0.15s ease, background-color 0.15s ease, border-color
+      0.15s ease;
+  }
+
+  /* Code areas */
+  .code-input {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    caret-color: oklch(var(--accent));
+  }
+
+  .code-output {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  /* Electric cyan type hints */
+  .type-highlight {
+    color: oklch(var(--accent));
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+
+  .text-label-upper {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Terminal cursor blink */
+  .cursor-blink::after {
+    content: "▊";
+    color: oklch(var(--accent));
+    animation: blink 1.1s step-start infinite;
+  }
+
+  /* Scanline effect for terminal feel */
+  .scanline-overlay {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      oklch(0 0 0 / 0.03) 2px,
+      oklch(0 0 0 / 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* Active cyan border glow */
+  .border-accent-glow {
+    border-color: oklch(var(--accent) / 0.8);
+    box-shadow: 0 0 0 1px oklch(var(--accent) / 0.2), inset 0 0 20px
+      oklch(var(--accent) / 0.03);
+  }
+
+  /* History entry hover */
+  .history-row:hover {
+    background: oklch(var(--muted) / 0.6);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.18s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.2s ease-out forwards;
+}

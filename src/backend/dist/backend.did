@@ -1,0 +1,10 @@
+type EvalResult = 
+ record {
+   error: text;
+   inferredType: text;
+   ok: bool;
+   value: text;
+ };
+service : {
+  evaluate: (src: text) -> (EvalResult);
+}

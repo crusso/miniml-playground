@@ -1,0 +1,20 @@
+{
+  "overview": "A mini-ML interpreter and interactive REPL running on the Internet Computer. Type ML expressions in the browser, and the backend handles parsing, Hindley-Milner type inference, and evaluation — returning both the inferred type and computed value.",
+  "features": [
+    "Backend ML engine with lexer, parser, Hindley-Milner type inference, and evaluator",
+    "Interactive REPL with evaluation history and syntax-highlighted results",
+    "Curated example gallery (factorial, higher-order functions, polymorphic types, and more)",
+    "Inferred type displayed alongside every evaluation result",
+    "Clear error messages for parse, type, and runtime failures"
+  ],
+  "category": "productivity",
+  "tags": [
+    "ml",
+    "interpreter",
+    "repl",
+    "type-inference",
+    "functional-programming",
+    "motoko"
+  ],
+  "last_updated": "2026-04-07T18:20:24.756Z"
+}
